@@ -31,3 +31,13 @@ ul.bd-breadcrumbs {
     }
   }
 }
+
+li.active.breadcrumb-item {
+  min-width: 0;
+}
+
+.breadcrumb-text-truncator {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
