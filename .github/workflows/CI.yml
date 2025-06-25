@@ -206,7 +206,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request'}}
     with:
       # this is the workflow run ID of the `CI.yml` workflow
-      workflow_run_id: ${{ github.event.workflow_run.id }}
+      workflow_run_id: ${{ github.run_id }}
     permissions:
       contents: write
       pull-requests: write
