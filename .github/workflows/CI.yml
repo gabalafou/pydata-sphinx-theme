@@ -114,6 +114,9 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - name: Print github run_id
+        run: echo "${{ github.run_id }}"
+
       - name: "Checkout repository 🛎"
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -157,7 +160,6 @@ jobs:
         id: coverage_comment
         with:
           GITHUB_TOKEN: ${{ github.token }}
-          MERGE_COVERAGE_FILES: true
 
       - name: "Store Pull Request comment to be posted 📤"
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
