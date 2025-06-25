@@ -16,8 +16,8 @@ jobs:
       contents: write # needed to edit the comment vs opening multiple ones
       actions: read
     steps:
-      - name: Print workflow_run_id
-        run: echo "workflow_run_id is: ${{ inputs.workflow_run_id }}"
+      - name: Print workflow_run_id input
+        run: echo "${{ inputs.workflow_run_id }}"
 
       # this needs the .coverage file so we download from the CI workflow artifacts
       - name: "Download coverage data 📥"
