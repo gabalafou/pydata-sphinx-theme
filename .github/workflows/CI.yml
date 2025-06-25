@@ -117,7 +117,7 @@ jobs:
       - name: "Checkout repository 🛎"
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          persist-credentials: false
+          persist-credentials: true
 
       - name: "Setup CI environment 🛠"
         uses: pydata/pydata-sphinx-theme/.github/actions/set-dev-env@4a1e7898d6c92dade5e489684277ab4ffd0eb053
@@ -203,10 +203,7 @@ jobs:
     # ensures this runs even if the coverage step does not continue - e.g. the
     # default coverage action will fail at first for external PRs, this is a workaround
     # to ensure the comment is posted
-    if: ${{ github.event.name == 'pull_request'}}
-    with:
-      # this is the workflow run ID of the `CI.yml` workflow
-      workflow_run_id: ${{ github.event.workflow_run.id }}
+    if: ${{ github.event_name == 'pull_request'}}
     permissions:
       contents: write
       pull-requests: write
