@@ -23,6 +23,7 @@ jobs:
           pattern: coverage-data-*
           merge-multiple: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
           run-id: ${{ inputs.workflow_run_id }}
 
       - name: "Check downloaded files"
