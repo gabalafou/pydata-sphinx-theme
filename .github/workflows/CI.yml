@@ -114,9 +114,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Print github run_id
-        run: echo "${{ github.run_id }}"
-
       - name: "Checkout repository 🛎"
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -207,9 +204,6 @@ jobs:
     # default coverage action will fail at first for external PRs, this is a workaround
     # to ensure the comment is posted
     if: ${{ github.event_name == 'pull_request'}}
-    with:
-      # this is the workflow run ID of the `CI.yml` workflow
-      workflow_run_id: ${{ github.run_id }}
     permissions:
       contents: write
       pull-requests: write

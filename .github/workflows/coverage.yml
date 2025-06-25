@@ -2,11 +2,7 @@ name: Post coverage comment
 
 on:
   workflow_call:
-    inputs:
-      # this is the workflow run ID of the `CI.yml` workflow
-      workflow_run_id:
-        required: true
-        type: string
+
 jobs:
   test:
     name: "Display code coverage"
@@ -16,14 +12,8 @@ jobs:
       contents: write # needed to edit the comment vs opening multiple ones
       actions: read
     steps:
-      - name: Print workflow_run_id input
-        run: echo "${{ inputs.workflow_run_id }}"
-
-      - name: Print github run_id
-        run: echo "${{ github.run_id }}"
-
       - name: "Post coverage comment 💬"
         uses: py-cov-action/python-coverage-comment-action@970a227e0c16ef4589a99a9970ab0ceb8c53059a
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PR_RUN_ID: ${{ inputs.workflow_run_id }}
+          GITHUB_PR_RUN_ID: ${{ github.run_id }}
